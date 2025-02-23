@@ -1,4 +1,5 @@
 baseURL = 'https://example.org/'
-languageCode = 'en-us'
+languageCode = 'zh-hans'
 title = "Liginity's Blog"
 theme = 'personal'
+defaultContentLanguage = 'zh'
