@@ -3,3 +3,12 @@ languageCode = 'zh-hans'
 title = "Liginity's Blog"
 theme = 'personal'
 defaultContentLanguage = 'zh'
+
+[markup]
+  [markup.highlight]
+    style = 'friendly' # looks like wikipedia color style
+
+[permalinks]
+  [permalinks.page]
+    # NOTE use slugorcontentbasename after hugo v0.144.0.
+    posts = '/posts/:year/:slugorfilename/'
