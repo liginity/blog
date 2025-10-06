@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'zh-hans'
 title = "Liginity's Blog"
-theme = 'personal'
+theme = 'PaperMod'
 defaultContentLanguage = 'zh'
 
 [markup]
