@@ -4,6 +4,20 @@ title = "Liginity's Blog"
 theme = 'PaperMod'
 defaultContentLanguage = 'zh'
 
+[menus]
+  [[menus.main]]
+    name = '首页'
+    pageRef = '/'
+    weight = 10
+  [[menus.main]]
+    name = '归档'
+    pageRef = '/archives'
+    weight = 20
+  [[menus.main]]
+    name = '分类'
+    pageRef = '/categories'
+    weight = 30
+
 [markup]
   [markup.highlight]
     lineNos = true
