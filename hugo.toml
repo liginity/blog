@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+# baseURL = 'https://example.org/'
 languageCode = 'zh-hans'
 title = "Liginity's Blog"
 theme = 'PaperMod'
