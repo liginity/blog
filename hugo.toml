@@ -4,6 +4,9 @@ title = "Liginity's Blog"
 theme = 'PaperMod'
 defaultContentLanguage = 'zh'
 
+[params]
+  mainSections = ['posts']
+
 [menus]
   [[menus.main]]
     name = '首页'
