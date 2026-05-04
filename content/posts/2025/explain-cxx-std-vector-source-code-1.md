@@ -8,13 +8,15 @@ tags = ['c++']
 
 <!-- # C++ `std::vector` 的 libc++ 源码解读 -->
 
-这里将解读 libc++ 14 中的 `std::vector` 源码。github 上 libc++ 的源码在 [这里][1]。
+这里将解读 libc++ 14 中的 `std::vector` 源码。
 首先介绍 `vector` 实现的基本框架，再解读一些实现细节。
 
 <!--more-->
 
 注意，在 linux 上，g++ 和 clang++ 一般使用 libstdc++ 这个标准库实现。
 如果要使用 libc++ 作为标准库实现，需要安装 libc++ 开发所需文件，并为 g++ 或 clang++ 添加命令行参数 `-stdlib=libc++`。
+
+github 上 libc++ 的源码在 [这里][1]。
 
 [1]: https://github.com/llvm/llvm-project/blob/llvmorg-14.0.6/libcxx/include/vector
 
@@ -56,11 +58,20 @@ private:
 一个 `std::vector` 对象有 4 个私有数据成员，它们用于管理 vector 私有的数组，以及 vector 所使用的内存配置器。
 
 - `begin_`：指针，指向私有数组的首地址。
-- `end_`：指针，指向当前已构造过的数组成员的下一个位置，有 `size() == begin_ - end_`。
-- `end_cap_`：指针，指向 vector 对象私有数组的末尾，对应 `capacity() == end_cap_ - begin_`。
-- `alloc_`：保存空间配置器。注意，在 libc++ 中，`end_cap_` 和 `alloc_` 两个成员合并存放在一个 `__compressed_pair` 类中，以便在情况允许时消除 `alloc_` 成员所需的空间。
+- `end_`：指针，指向当前已构造过的数组成员的下一个位置。
+    - 满足 `size() == end_ - begin_`。
+- `end_cap_`：指针，指向私有数组的末尾。
+    - 满足 `capacity() == end_cap_ - begin_`。
+- `alloc_`：空间配置器。注意，在 libc++ 中，`end_cap_` 和 `alloc_` 两个成员合并存放在一个 `__compressed_pair` 类中，以便在情况允许时消除 `alloc_` 成员所需的空间。
 
 使用无状态的空间配置器时，常见的 C++ 实现都会把存放它所需的数据成员的空间优化掉。
 这时有 `sizeof(std::vector<int>) == 24`，即只存放 3 个必需的 8 字节的指针变量，省略掉空间配置器这个成员。
 当需要使用空间配置器对象时，所用方法类似于直接默认构造出一个新对象。
 <!-- 这是 Empty Base Optimization (EBO)，需要配合模板元编程的效果 -->
+
+TODO
+- vector 如何管理动态数组：分配，扩容，释放
+- vector 如何组织代码，封装数组的分配扩容等操作
+- vector 有哪些关键的方法，比如构造函数，插入函数等
+
+libc++ 是如何组织代码的？有哪些初步的细节可以讲解？进一步学习可以考虑哪些内容？

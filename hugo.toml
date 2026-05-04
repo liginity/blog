@@ -1,8 +1,25 @@
-baseURL = 'https://example.org/'
+# baseURL = 'https://example.org/'
 languageCode = 'zh-hans'
 title = "Liginity's Blog"
-theme = 'personal'
+theme = 'PaperMod'
 defaultContentLanguage = 'zh'
+
+[params]
+  mainSections = ['posts']
+
+[menus]
+  [[menus.main]]
+    name = '首页'
+    pageRef = '/'
+    weight = 10
+  [[menus.main]]
+    name = '归档'
+    pageRef = '/archives'
+    weight = 20
+  [[menus.main]]
+    name = '分类'
+    pageRef = '/categories'
+    weight = 30
 
 [markup]
   [markup.highlight]
