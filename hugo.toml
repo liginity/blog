@@ -20,6 +20,10 @@ defaultContentLanguage = 'zh'
     name = '分类'
     pageRef = '/categories'
     weight = 30
+  [[menus.main]]
+    name = '简记'
+    pageRef = '/short-notes'
+    weight = 40
 
 [markup]
   [markup.highlight]
