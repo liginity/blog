@@ -25,6 +25,7 @@ defaultContentLanguage = 'zh'
   [markup.highlight]
     lineNos = true
     style = 'friendly' # looks like wikipedia color style
+    noClasses = false
 
 [permalinks]
   [permalinks.page]
